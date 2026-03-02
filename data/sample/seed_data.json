@@ -1,0 +1,52 @@
+{
+  "users": [
+    {"name": "Sarah Chen", "email": "sarah.chen@acme.com", "role": "drafter"},
+    {"name": "Michael Torres", "email": "michael.torres@acme.com", "role": "reviewer"},
+    {"name": "Lisa Nakamura", "email": "lisa.nakamura@acme.com", "role": "approver"},
+    {"name": "Admin User", "email": "admin@acme.com", "role": "admin"}
+  ],
+  "templates": [
+    {
+      "name": "Mutual Non-Disclosure Agreement",
+      "template_type": "NDA",
+      "use_case": "Vendor onboarding",
+      "description": "Standard mutual NDA for use with vendors, partners, and prospective business relationships.",
+      "review_interval_days": 365,
+      "file": "nda_template_v1.docx",
+      "owner_email": "sarah.chen@acme.com",
+      "versions": [
+        {
+          "file": "nda_template_v2.docx",
+          "change_summary": "Added AI training data carve-out, extended term from 2 to 3 years, added return of materials clause, enhanced remedies to include injunctive relief"
+        }
+      ],
+      "workflow": [
+        {"to_status": "review", "by_email": "sarah.chen@acme.com", "comment": "Ready for legal review"},
+        {"to_status": "approved", "by_email": "michael.torres@acme.com", "comment": "Approved with AI provisions"},
+        {"to_status": "published", "by_email": "lisa.nakamura@acme.com", "comment": "Publishing for company-wide use"}
+      ],
+      "force_stale_days": 400
+    },
+    {
+      "name": "Consulting Services Agreement",
+      "template_type": "Consulting Agreement",
+      "use_case": "Contractor engagement",
+      "description": "Standard consulting agreement for engaging independent contractors and consulting firms.",
+      "review_interval_days": 365,
+      "file": "consulting_agreement_v1.docx",
+      "owner_email": "sarah.chen@acme.com",
+      "workflow": [
+        {"to_status": "review", "by_email": "sarah.chen@acme.com", "comment": "Submitted for review"}
+      ]
+    },
+    {
+      "name": "Software License Agreement",
+      "template_type": "Software License",
+      "use_case": "SaaS customer licensing",
+      "description": "Standard software license agreement for SaaS products.",
+      "review_interval_days": 180,
+      "file": "software_license_v1.docx",
+      "owner_email": "michael.torres@acme.com"
+    }
+  ]
+}

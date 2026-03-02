@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - app-data:/app/data
+    environment:
+      - CTM_DATABASE_URL=sqlite:///data/app.db
+      - CTM_TEMPLATES_REPO_PATH=data/templates_repo
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - CTM_API_BASE_URL=http://api:8000/api
+    depends_on:
+      - api
+
+volumes:
+  app-data:
