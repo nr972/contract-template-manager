@@ -41,6 +41,43 @@ def main() -> None:
         ["Template Registry", "Upload Template", "Stale Alerts"],
     )
 
+    # Shutdown button
+    st.sidebar.markdown("---")
+    if st.sidebar.button("Shutdown", type="secondary", use_container_width=True):
+        client.shutdown()
+        import streamlit.components.v1 as components
+
+        components.html(
+            """<script>
+            (function() {
+                var doc = window.parent.document;
+                doc.open();
+                doc.write(
+                    '<!DOCTYPE html><html lang="en"><head>' +
+                    '<meta charset="UTF-8">' +
+                    '<meta name="viewport" content="width=device-width,initial-scale=1.0">' +
+                    '<title>App Shut Down</title>' +
+                    '<style>' +
+                    '* { margin:0; padding:0; box-sizing:border-box; }' +
+                    'body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;' +
+                    ' display:flex; align-items:center; justify-content:center;' +
+                    ' min-height:100vh; background:#f8f9fa; color:#333; }' +
+                    '.c { text-align:center; padding:2rem; }' +
+                    'h1 { font-size:1.5rem; margin-bottom:0.75rem; }' +
+                    'p  { font-size:1rem; color:#666; }' +
+                    '</style></head><body>' +
+                    '<div class="c"><h1>App has been shut down.</h1>' +
+                    '<p>You can close this tab.</p></div>' +
+                    '</body></html>'
+                );
+                doc.close();
+            })();
+            </script>""",
+            height=0,
+            scrolling=False,
+        )
+        st.stop()
+
     if page == "Template Registry":
         from frontend.pages.template_registry import render
 

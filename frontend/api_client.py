@@ -147,3 +147,15 @@ class APIClient:
         )
         resp.raise_for_status()
         return resp.json()
+
+    def shutdown(self) -> None:
+        """Fire-and-forget POST to the shutdown endpoint.
+
+        Uses a short timeout because the server may terminate before
+        sending a response.  Any exception is swallowed — the server
+        going away is the expected outcome.
+        """
+        try:
+            requests.post(f"{self.base_url}/v1/shutdown", timeout=2)
+        except Exception:
+            pass

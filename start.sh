@@ -10,6 +10,13 @@ cleanup() {
     echo ""
     echo "Shutting down..."
     kill "$API_PID" "$STREAMLIT_PID" 2>/dev/null || true
+    # Give processes up to 5 seconds to exit gracefully
+    for i in $(seq 1 10); do
+        kill -0 "$API_PID" 2>/dev/null || kill -0 "$STREAMLIT_PID" 2>/dev/null || break
+        sleep 0.5
+    done
+    # Force-kill any survivors
+    kill -9 "$API_PID" "$STREAMLIT_PID" 2>/dev/null || true
     wait "$API_PID" "$STREAMLIT_PID" 2>/dev/null || true
     echo "Done."
 }
