@@ -31,7 +31,7 @@ if not exist "data" mkdir data
 
 REM Start API
 echo Starting API on port %API_PORT%...
-start /b uvicorn app.main:app --host 0.0.0.0 --port %API_PORT%
+start /b uvicorn ctm_app.main:app --host 0.0.0.0 --port %API_PORT%
 
 REM Wait for API
 echo Waiting for API...
@@ -39,7 +39,7 @@ timeout /t 5 /nobreak >nul
 
 REM Start Streamlit
 echo Starting Streamlit on port %STREAMLIT_PORT%...
-start /b streamlit run frontend/app.py --server.port %STREAMLIT_PORT% --server.headless true
+start /b streamlit run ctm_frontend/app.py --server.port %STREAMLIT_PORT% --server.headless true
 
 timeout /t 3 /nobreak >nul
 

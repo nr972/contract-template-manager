@@ -9,8 +9,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.models.base import Base
-from app.models.user import User
+from ctm_app.models.base import Base
+from ctm_app.models.user import User
 
 
 @pytest.fixture(scope="function")
@@ -37,7 +37,7 @@ def db_session(test_engine) -> Generator[Session, None, None]:
 
 @pytest.fixture(scope="function")
 def git_repo(tmp_path: Path):
-    from app.services.git_service import GitService
+    from ctm_app.services.git_service import GitService
 
     repo_path = tmp_path / "templates_repo"
     return GitService(repo_path=repo_path)
@@ -45,12 +45,12 @@ def git_repo(tmp_path: Path):
 
 @pytest.fixture(scope="function")
 def client(test_engine, db_session: Session, tmp_path: Path) -> Generator[TestClient, None, None]:
-    from app.api.deps import get_db
-    from app.api.templates import _get_git_service
-    from app.api.versions import _get_git_service as _get_git_service_v
-    from app.api.diff import _get_git_service as _get_git_service_d
-    from app.services.git_service import GitService
-    from app.main import app
+    from ctm_app.api.deps import get_db
+    from ctm_app.api.templates import _get_git_service
+    from ctm_app.api.versions import _get_git_service as _get_git_service_v
+    from ctm_app.api.diff import _get_git_service as _get_git_service_d
+    from ctm_app.services.git_service import GitService
+    from ctm_app.main import app
 
     repo_path = tmp_path / "templates_repo"
 

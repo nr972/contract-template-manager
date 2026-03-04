@@ -4,8 +4,8 @@ from unittest.mock import MagicMock
 import pytest
 from docx import Document
 
-from app.core.exceptions import FileValidationError
-from app.services.file_validator import validate_docx_upload
+from ctm_app.core.exceptions import FileValidationError
+from ctm_app.services.file_validator import validate_docx_upload
 
 
 def _make_upload(filename: str, content: bytes) -> MagicMock:

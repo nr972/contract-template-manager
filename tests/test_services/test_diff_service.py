@@ -2,7 +2,7 @@ from io import BytesIO
 
 from docx import Document
 
-from app.services.diff_service import compute_diff, extract_text_from_docx
+from ctm_app.services.diff_service import compute_diff, extract_text_from_docx
 
 
 def _make_docx(text: str) -> bytes:

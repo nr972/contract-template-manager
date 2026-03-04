@@ -10,13 +10,13 @@ A Contract Template Version Control & Approval System for legal teams. Manages t
 
 ### API (FastAPI)
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn ctm_app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 API docs: http://localhost:8000/docs
 
 ### Frontend (Streamlit)
 ```bash
-streamlit run frontend/app.py --server.port 8501
+streamlit run ctm_frontend/app.py --server.port 8501
 ```
 UI: http://localhost:8501
 
@@ -49,7 +49,7 @@ python scripts/seed_sample_data.py
 ## Project Structure
 
 ```
-app/                    # FastAPI backend
+ctm_app/                # FastAPI backend
   main.py               # App factory, lifespan (table creation, Git repo init)
   config.py             # pydantic-settings configuration
   models/               # SQLAlchemy ORM models (User, Template, TemplateVersion, WorkflowTransition)
@@ -59,7 +59,7 @@ app/                    # FastAPI backend
     router.py           # Aggregates all route modules
   services/             # Business logic (git_service, template, version, workflow, diff, stale, file_validator)
   core/                 # Shared definitions (workflow_states enum, exceptions)
-frontend/               # Streamlit UI
+ctm_frontend/           # Streamlit UI
   app.py                # Entry point with sidebar nav + user selector
   api_client.py         # HTTP wrapper for API calls
   pages/                # Individual pages (registry, detail, upload, diff, stale)

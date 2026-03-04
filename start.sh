@@ -49,7 +49,7 @@ mkdir -p data
 
 # Start API
 echo "Starting API on port $API_PORT..."
-uvicorn app.main:app --host 0.0.0.0 --port "$API_PORT" &
+uvicorn ctm_app.main:app --host 0.0.0.0 --port "$API_PORT" &
 API_PID=$!
 
 # Wait for API to be ready
@@ -64,7 +64,7 @@ done
 
 # Start Streamlit
 echo "Starting Streamlit on port $STREAMLIT_PORT..."
-streamlit run frontend/app.py --server.port "$STREAMLIT_PORT" --server.headless true &
+streamlit run ctm_frontend/app.py --server.port "$STREAMLIT_PORT" --server.headless true &
 STREAMLIT_PID=$!
 
 sleep 2

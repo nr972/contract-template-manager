@@ -1,11 +1,11 @@
 import pytest
 from sqlalchemy.orm import Session
 
-from app.core.exceptions import InsufficientRoleError, InvalidTransitionError
-from app.core.workflow_states import TemplateStatus, UserRole
-from app.models.template import Template
-from app.models.user import User
-from app.services import workflow_service
+from ctm_app.core.exceptions import InsufficientRoleError, InvalidTransitionError
+from ctm_app.core.workflow_states import TemplateStatus, UserRole
+from ctm_app.models.template import Template
+from ctm_app.models.user import User
+from ctm_app.services import workflow_service
 
 
 def _make_template(db: Session, user: User, status: str = "draft") -> Template:

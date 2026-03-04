@@ -10,7 +10,7 @@ COPY pyproject.toml .
 RUN pip install --no-cache-dir .
 
 COPY app/ app/
-COPY frontend/ frontend/
+COPY ctm_frontend/ ctm_frontend/
 COPY data/sample/ data/sample/
 COPY scripts/ scripts/
 COPY railway_start.sh .

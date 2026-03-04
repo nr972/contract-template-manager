@@ -5,8 +5,8 @@ WORKDIR /app
 COPY pyproject.toml .
 RUN pip install --no-cache-dir .
 
-COPY frontend/ frontend/
+COPY ctm_frontend/ ctm_frontend/
 
 EXPOSE 8501
 
-CMD ["streamlit", "run", "frontend/app.py", "--server.port", "8501", "--server.headless", "true", "--server.address", "0.0.0.0"]
+CMD ["streamlit", "run", "ctm_frontend/app.py", "--server.port", "8501", "--server.headless", "true", "--server.address", "0.0.0.0"]

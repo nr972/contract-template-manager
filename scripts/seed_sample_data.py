@@ -20,7 +20,7 @@ def main() -> None:
         resp.raise_for_status()
     except Exception:
         print(f"ERROR: Cannot connect to API at {API_BASE}")
-        print("Start the API first: uvicorn app.main:app --port 8000")
+        print("Start the API first: uvicorn ctm_app.main:app --port 8000")
         sys.exit(1)
 
     # Check sample docs exist

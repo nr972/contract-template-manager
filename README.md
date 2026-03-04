@@ -40,10 +40,10 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 
 # Terminal 1 — API
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+uvicorn ctm_app.main:app --host 0.0.0.0 --port 8000 --reload
 
 # Terminal 2 — Frontend
-streamlit run frontend/app.py --server.port 8501
+streamlit run ctm_frontend/app.py --server.port 8501
 ```
 
 ### Load Sample Data
@@ -88,7 +88,7 @@ This creates sample users (drafter, reviewer, approver, admin), three templates 
 ## Project Structure
 
 ```
-app/
+ctm_app/
   main.py               FastAPI app with lifespan
   config.py             pydantic-settings configuration (env prefix: CTM_)
   models/               SQLAlchemy ORM models
@@ -96,7 +96,7 @@ app/
   api/                  Route handlers + dependency injection
   services/             Business logic (git, template, version, workflow, diff, stale)
   core/                 Workflow states enum, custom exceptions
-frontend/
+ctm_frontend/
   app.py                Streamlit entry point
   api_client.py         HTTP wrapper for API calls
   pages/                Individual UI pages

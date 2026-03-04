@@ -2,7 +2,7 @@ import uuid
 
 import pytest
 
-from app.services.git_service import GitService
+from ctm_app.services.git_service import GitService
 
 
 def test_store_and_retrieve(git_repo: GitService):

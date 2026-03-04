@@ -2,9 +2,9 @@ from datetime import datetime, timedelta, timezone
 
 from sqlalchemy.orm import Session
 
-from app.models.template import Template
-from app.models.user import User
-from app.services.stale_service import get_stale_templates
+from ctm_app.models.template import Template
+from ctm_app.models.user import User
+from ctm_app.services.stale_service import get_stale_templates
 
 
 def test_stale_published_template(db_session: Session, sample_user: User):
