@@ -23,7 +23,17 @@ def main() -> None:
         st.stop()
 
     if not users:
-        st.warning("No users found. Create users via the API first, or run the seed script.")
+        st.info("No users found. Load sample data to get started.")
+        if st.button("Load Sample Data", type="primary"):
+            with st.spinner("Loading sample data..."):
+                try:
+                    from scripts.seed_sample_data import main as seed_main
+
+                    seed_main()
+                    st.success("Sample data loaded! Refreshing...")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Failed to load sample data: {e}")
         st.stop()
 
     user_options = {u["id"]: f"{u['name']} ({u['role']})" for u in users}
